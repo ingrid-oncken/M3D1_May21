@@ -19,7 +19,7 @@ console.log(`******************** EX 1 ******`)
 //   })
 // }
 
-//METHOD 2
+// METHOD 2
 // function maxChar(str) {
 //   const charMap = {}
 //   let max = 0
@@ -47,19 +47,41 @@ console.log(`******************** EX 1 ******`)
 //   return maxChar
 // }
 
+//METHOD 3 - STRIVE
+// const maxChar = (str) => {
+//   let max = 0
+//   let maxChar = ""
+//   str.split("").forEach((char) => {
+//     if (str.split(char).length > max) {
+//       max = str.split(char).length
+//       maxChar = char
+//     }
+//   })
+//   return maxChar
+// }
+
+//METHOD 4
 const maxChar = (str) => {
+  let obj = {}
+
+  for (let char of str.toLowerCase()) !obj[char] ? (obj[char] = 1) : obj[char]++
+  // console.log(obj) ----> { a: 6, i: 1, z: 2, d: 1, ' ': 1, n: 1, r: 1, o: 1, v: 1 }
   let max = 0
   let maxChar = ""
-  str.split("").forEach((char) => {
-    if (str.split(char).length > max) {
-      max = str.split(char).length
+
+  for (char in obj) {
+    if (obj[char] >= max) {
+      max = obj[char]
       maxChar = char
     }
-  })
-  return maxChar
+  }
+  console.log(
+    `The most common character is ${maxChar} and appears appears ${max} times`
+  )
 }
-
-console.log(maxChar("ema"))
+maxChar(`Aizada Nazarova`)
+maxChar(`Ingrid Oncken`)
+maxChar(`Ema`)
 
 /* 2) ANAGRAMS
 
@@ -73,7 +95,16 @@ or punctuation.  Consider capital letters to be the same as lower case
   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
   anagrams('Hi there', 'Bye there') --> False
 */
+console.log(`\n\n`)
+console.log(`******************** EX 2 ******`)
+const isAnagram = (str1, str2) =>
+  console.log(
+    str1.toLowerCase().split("").sort().join("") ===
+      str2.toLowerCase().split("").sort().join("")
+  )
 
+isAnagram("Rail safety", "fairy tales")
+isAnagram("Hi there", "Bye there")
 /* 3) ANAGRAMS 2
 
 Given a word and a list of possible anagrams, select the correct sublist.
