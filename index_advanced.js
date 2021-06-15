@@ -10,6 +10,56 @@ commonly used in the string.
 console.log(`\n\n`)
 console.log(`******************** EX 1 ******`)
 
+//METHOD 1
+// function maxChar(str) {
+//   const obj = {}
+//   str.split("").forEach((char) => obj[char] + 1 || 1)
+//   return Object.keys(obj).reduce((prev, next) => {
+//     obj[a] >= obj[b] ? a : b
+//   })
+// }
+
+//METHOD 2
+// function maxChar(str) {
+//   const charMap = {}
+//   let max = 0
+//   let maxChar = ""
+
+//   // create character map
+//   for (let char of str) {
+//     if (charMap[char]) {
+//       // increment the character's value if the character existed in the map
+//       charMap[char]++
+//     } else {
+//       // Otherwise, the value of the character will be increamented by 1
+//       charMap[char] = 1
+//     }
+//   }
+
+//   // find the most commonly used character
+//   for (let char in charMap) {
+//     if (charMap[char] > max) {
+//       max = charMap[char]
+//       maxChar = char
+//     }
+//   }
+
+//   return maxChar
+// }
+
+const maxChar = (str) => {
+  let max = 0
+  let maxChar = ""
+  str.split("").forEach((char) => {
+    if (str.split(char).length > max) {
+      max = str.split(char).length
+      maxChar = char
+    }
+  })
+  return maxChar
+}
+
+console.log(maxChar("ema"))
 
 /* 2) ANAGRAMS
 
